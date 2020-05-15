@@ -1,22 +1,8 @@
 # **WordPress requirements**
 
-- Web Server
-
-- PHP
-
-- - Required PHP extensions
-  - Recommended PHP extensions
-  - Alternative PHP extensions
-  - Upload PHP extensions
-  - System Extensions
-
-- Database
-
-- How do I know what version I have?
-
 Although WordPress can work in almost any environment, even very minimal ones, it must be acknowledged that it does not work completely well in these. That's why here we are going to make some minimum recommendations of the environment in which it would work most effectively.
 
-## **Web Server**
+## Web Server
 
 The web server is the system where the files of the web site are hosted and where the users arrive to consult them. There are many web servers, and in principle anyone who supports a PHP connection should be able to work with WordPress.
 

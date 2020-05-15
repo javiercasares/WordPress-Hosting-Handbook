@@ -1,51 +1,5 @@
 # WordPress Security
 
-- What we understand by security
-
-- Automatic updates
-
-- - WordPress Core
-
-  - - 100% automatic core update
-    - Core upgrade to minor versions only (recommended)
-    - Disable automatic updates
-
-  - Plugins, themes and translations
-
-  - Disable all updates
-
-- Secure HTTP and TLS
-
-- - Secure Administration Access
-  - Unsafe requests
-
-- File system
-
-- - File permissions
-  - User accounts
-  - Core and media writing permissions
-  - PHP Execution Permissions
-
-- Users
-
-- - User Roles
-  - Usernames
-  - Secure passwords
-  - Second Authentication Factor (2FA)
-
-- Security in the cache
-
-- - OpCache Security
-
-  - - Access validation
-    - Root validation
-    - API restriction
-
-  - Object Caching Security
-
-  - - Redis
-    - Memcached
-
 ## What we understand by security
 
 Is WordPress safe? Yes, but with conditions. The first and biggest is that you keep everything up to date. This means that all the parts that WordPress is affected by must be kept safe, as far as possible.
@@ -70,19 +24,25 @@ To configure these automatic updates, it is best to add a series of codes in the
 
 You have to add in the file wp-config.php the following line:
 
-`define('WP_AUTO_UPDATE_CORE', true);`
+```php
+define('WP_AUTO_UPDATE_CORE', true);
+```
 
 ##### Core update for minor versions only (recommended)
 
 You have to add in the file wp-config.php the following line. When there are major updates you should update it by hand.
 
-`define('WP_AUTO_UPDATE_CORE', 'minor');`
+```php
+define('WP_AUTO_UPDATE_CORE', 'minor');
+```
 
 ##### Disable automatic updates
 
 You have to add in the file wp-config.php the following line. Unless you do very intensive maintenance, this option is not recommended.
 
-`define('WP_AUTO_UPDATE_CORE', false);`
+```php
+define('WP_AUTO_UPDATE_CORE', false);
+```
 
 #### Plugins, themes and translations
 
@@ -92,12 +52,14 @@ In case you want to set everything up automatically, you can (we recommend) do i
 
 The content of the Plugin would be as follows:
 
-`defined('ABSPATH') or die('Bye bye!');
+```php
+defined('ABSPATH') or die('Bye bye!');
 add_filter('auto_update_core', '__return_true');
 add_filter('auto_update_plugin', '__return_true');
 add_filter('auto_update_theme', '__return_true');
 add_filter('auto_update_translation', '__return_true');
-add_filter('auto_core_update_send_email', '__return_true');`
+add_filter('auto_core_update_send_email', '__return_true');
+```
 
 From WordPress version 5.5 onwards, a system is included that allows you to decide which Plugins and Themes you want to update automatically so that the update work is much lighter and you don't have to resort to the custom Plugin system.
 
@@ -105,7 +67,9 @@ From WordPress version 5.5 onwards, a system is included that allows you to deci
 
 In case you want to perform the updates manually or with other different systems, as could be the WP-CLI, and even if you have an installation that for some reason you cannot or should not update, you can include in the wp-config.php a line that will prevent the updates that are not done by alternative methods.
 
-`define('AUTOMATIC_UPDATER_DISABLED', true);`
+```php
+define('AUTOMATIC_UPDATER_DISABLED', true);
+```
 
 ## Secure HTTP and TLS
 
@@ -117,16 +81,20 @@ Since it's easy to set up HTTPS these days, and since it offers many advantages 
 
 If for some reason you don't want your whole site to be over HTTPS, you can always at least make the private part of the administration panel require a minimum of security. In this case, you can add the lines of code in the wp-config.php so that when accessing the login screen (*wp-login*) or the administration panel (*wp-admin*) the use of HTTPS is forced.
 
-`define('FORCE_SSL_LOGIN', true);`
-`define('FORCE_SSL_ADMIN', true);`
+```php
+define('FORCE_SSL_LOGIN', true);
+define('FORCE_SSL_ADMIN', true);
+```
 
 ### Insecure requests
 
 If you come from a legacy or very old website where there are internal calls to HTTP, you can try to search all sites for both themes and plugins and database to update the http:// by https://, or you can use an internal technology that allows to increase the security of all requests automatically.
 
-This configuration has to be done at the web server level, and for example, it could be added in the .htaccess if you use Apache HTTPD, with the following content
+This configuration has to be done at the web server level, and for example, it could be added in the .htaccess if you use Apache HTTPD, with the following content.
 
-`Header set Content-Security-Policy: upgrade-insecure-requests;`
+```
+Header set Content-Security-Policy: upgrade-insecure-requests;
+```
 
 ## File system
 
@@ -163,7 +131,7 @@ If possible, it is highly recommended that WordPress installations be done with 
 
 For WordPress to work properly, it is necessary that PHP allows access to files and can write, especially if you have automatic updates or want WordPress itself to manage everything possible.
 
-In addition, installations usually have the /wp-content/uploads/ folder configured by default as a storage for files uploaded through the Media area of the system. For the system to work, PHP must be able to write to this folder.
+In addition, installations usually have the `/wp-content/uploads/` folder configured by default as a storage for files uploaded through the Media area of the system. For the system to work, PHP must be able to write to this folder.
 
 ### Execution permissions for PHP
 
@@ -171,11 +139,11 @@ To increase the security, and taking into account that by default in the "upload
 
 In this case, for example, you can add in that folder /wp-content/uploads/ a .htaccess file with the following content:
 
+```
 <Files ~ ".+\.php">
-
- Deny from All
-
+  Deny from All
 </Files>
+```
 
 ## Users
 
@@ -221,15 +189,17 @@ You may be interested in the [Two Factor](https://wordpress.org/plugins/two-fact
 
 While caching can significantly improve the performance of WordPress websites, caching can leave sites exposed to vulnerabilities if caching providers are not properly configured. Some common vulnerabilities include, but are not limited to, websites accessing cached data for other websites or caching applications serving bad data or files. Each application typically has settings to provide a secure environment and to enjoy the performance benefits of caching.
 
-### OpCache Security
+### Opcache Security
 
-The PHP opcode can significantly improve the performance of PHP processing, however, when misconfigured it can allow users to access other users' PHP files without authorization. There are important PHP configuration options for opcode caching that mitigate vulnerabilities such as unauthorized file access.
+The PHP Opcode can significantly improve the performance of PHP processing, however, when misconfigured it can allow users to access other users' PHP files without authorization. There are important PHP configuration options for opcode caching that mitigate vulnerabilities such as unauthorized file access.
 
 #### Access validation
 
 The following configuration causes PHP to check that the current user has the necessary permissions to access the cache file. It must be enabled at the root level of php.ini to prevent users from accessing other users' cached files.
 
-`opcache.validate_permission = on`
+```
+opcache.validate_permission = on
+```
 
 This setting is not activated by default. Available as of PHP 7.0.14.
 
@@ -237,7 +207,9 @@ This setting is not activated by default. Available as of PHP 7.0.14.
 
 The following configuration prevents PHP users from accessing files outside the chrooted directory that they would not normally have access to. It should also be added to the root level of php.ini to prevent unauthorized access to files.
 
-`opcache.validate_root = on`
+```
+opcache.validate_root = on
+```
 
 This setting is not activated by default. Available as of PHP 7.0.14.
 
@@ -247,10 +219,12 @@ Normally any PHP user can access the Opcache API to view the currently cached fi
 
 Restricting the Opcache API prevents PHP scripts from running in directories that are not authorized to view cached files and interact with the PHP opcode cache manually from within the PHP scripts. The following configuration defines the directory path with which PHP scripts must start in order to access the opcache API.
 
-`opcache.restrict_api = '/some/folder/path`
+```
+opcache.restrict_api = '/some/folder/path
+```
 
 
-The default value for the configuration is " (*nothing*), which means that there are no restrictions on which PHP scripts can access the Opcache API. This setting must be defined in the php.ini root of your PHP configuration to prevent users from overriding it.
+The default value for the configuration is `"` (*nothing*), which means that there are no restrictions on which PHP scripts can access the Opcache API. This setting must be defined in the php.ini root of your PHP configuration to prevent users from overriding it.
 
 ### Object Caching Security
 
@@ -276,7 +250,9 @@ If you use Redis for caching database objects, the use of a single Redis cache k
 
 The random key is usually set through the Redis cache plugin used to enable object caching. Also, can be configured on the wp-config.php.
 
-`define( 'WP_CACHE_KEY_SALT', random_thing_here' );`
+```php
+define( 'WP_CACHE_KEY_SALT', random_thing_here' );
+```
 
 #### Memcached
 

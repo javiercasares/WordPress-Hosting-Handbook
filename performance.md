@@ -1,31 +1,10 @@
-# **Improve your WordPress performance**
-
-- WordPress Cache
-
-- - Browser cache
-  - CDN - Content Distribution Network
-  - Page cache
-  - Opcode cache
-  - Cache of objects
-  - Fragment Cache
-
-- PHP in WordPress
-
-- - PHP Version
-  - Configuration
-  - Timeouts
-  - Memory limit
-  - File Upload
-
-- Task scheduler (Crons)
-
----
+# Improve your WordPress performance
 
 WordPress is a stable system but depends on the performance of the operating system, web server, PHP and database to function properly. As it is a software running on the server, every time a user arrives it will run completely.
 
 This is why some improvements and changes are recommended to improve the performance of the whole system.
 
-## **Caching in WordPress**
+## Caching in WordPress
 
 WordPress by default is 100% dynamic, which means that every time someone accesses it, everything has to be generated completely, which is highly calculated. Some of these elements that can slow down the process are database queries, the execution of PHP itself, calls to external APIs...
 
@@ -54,30 +33,31 @@ The web browsers we use to visit the sites allow us to store information that ma
 
 An example would be to add to the .htaccess file (in the case of using an Apache HTTPD web server) the following content, which forces to store the different types the indicated seconds:
 
-`<IfModule mod_expires.c>
+```
+<IfModule mod_expires.c>
   ExpiresActive on
-  #Varios
+  # Others
   ExpiresByType application/pdf A2592000
   ExpiresByType image/x-icon A2592000
   ExpiresByType image/vnd.microsoft.icon A2592000
   ExpiresByType image/svg+xml A2592000
-  #Imagenes
+  # Images
   ExpiresByType image/jpg A2592000
   ExpiresByType image/jpeg A2592000
   ExpiresByType image/png A2592000
   ExpiresByType image/gif A2592000
   ExpiresByType image/webp A2592000
-  #Media
+  # Media
   ExpiresByType video/ogg A2592000
   ExpiresByType audio/ogg A2592000
   ExpiresByType video/mp4 A2592000
   ExpiresByType video/webm A2592000
-  #CSS/JS
+  # CSS/JS
   ExpiresByType text/css A2592000
   ExpiresByType text/javascript A2592000
   ExpiresByType application/javascript A2592000
   ExpiresByType application/x-javascript A2592000
-  #Fuentes
+  # Fonts
   ExpiresByType application/x-font-ttf A2592000
   ExpiresByType application/x-font-woff A2592000
   ExpiresByType application/font-woff A2592000
@@ -86,7 +66,8 @@ An example would be to add to the .htaccess file (in the case of using an Apache
   ExpiresByType font/ttf A2592000
   ExpiresByType font/woff A2592000
   ExpiresByType font/woff2 A2592000
-</IfModule>`
+</IfModule>
+```
 
 ### CDN – Content Distribution Network
 
@@ -179,11 +160,15 @@ The maximum time allowed for data transfer from the web server to PHP is set wit
 
 The memory limit used by PHP can be configured in the php.ini directives. However, WordPress allows you to set limits in the configuration file wp-config.php. This way if the server limits are higher, those will be executed, but if the limits set by WordPress are higher, those will be used.
 
-`define( 'WP_MEMORY_LIMIT', '128M' );`
+```php
+define( 'WP_MEMORY_LIMIT', '128M' );
+```
 
 This option declares the amount of memory that WordPress should request to render the front end of the website.
 
-`define( 'WP_MAX_MEMORY_LIMIT', '256M' );`
+```php
+define( 'WP_MAX_MEMORY_LIMIT', '256M' );
+```
 
 Since the administration panel (*wp-admin*) usually requires more memory, there is a separate setting for the amount that can be set for logged-in users. This is usually very useful when uploading images (as they are usually processed after the upload). You can set it above the limit on the front to ensure that your administration panel has all the resources it needs.
 
@@ -205,26 +190,36 @@ Although this check does not usually consume many resources, if a website has a 
 
 In these cases, it is best to disable the crones system by configuring the wp-config.php.
 
-`define( 'DISABLE_WP_CRON', true );`
+```php
+define( 'DISABLE_WP_CRON', true );
+```
 
 In this case, you should consider, for example, configuring the server to run it manually using [WP-CLI](https://wp-cli.org/). In this case, its execution is configured every 5 minutes. Unless you have a high traffic site or with high requirements (such as an e-commerce) it should be enough every 5 minutes, but you can reduce the execution to every minute.
 
-`*/5 * * * WP_CLI_PHP=/usr/local/bin/php; SHELL=/bin/bash; /usr/local/bin/wp cron event run --due-now --path=/home/example.com/public_html/ >/dev/null 2>&1`
+```bash
+*/5 * * * WP_CLI_PHP=/usr/local/bin/php; SHELL=/bin/bash; /usr/local/bin/wp cron event run --due-now --path=/home/example.com/public_html/ >/dev/null 2>&1
+```
 
 In case of not having WP-CLI, it is always possible to make use of the call directly in a public way, although it is recommended for security reasons to limit the calls to the IPs that make the requests (the own machine or the external service that makes the requests).
 
-`*/5 * * * * wget -q -O - https://example.com/wp-cron.php?doing_wp_cron > /dev/null 2>&1`
+```bash
+*/5 * * * * wget -q -O - https://example.com/wp-cron.php?doing_wp_cron > /dev/null 2>&1
+```
 
 A more extreme case, and one that requires some knowledge of PHP and shell programming, might be to create a small piece of PHP code that runs the cron locally, so that it does not have to be accessed externally.
 
 For this we would create a PHP file with the following code (for example named /home/example.com/run-wp-cron.php):
 
-`<?php`
-`chdir('/home/example.com/public_html/'); // the absolute path where WordPress is located`
-`include('wp-cron.php');`
+```php
+<?php
+chdir('/home/example.com/public_html/'); // the absolute path where WordPress is located
+include('wp-cron.php');
+```
 
 And that we would call from the cron with the following query:
 
-`*/5 * * * /usr/bin/php /home/example.com/run-wp-cron.php > /dev/null 2>&1`
+```bash
+*/5 * * * /usr/bin/php /home/example.com/run-wp-cron.php > /dev/null 2>&1
+```
 
 There are many ways to make the calls corresponding to the scheduled tasks, so it is highly recommended that you talk to your web hosting provider for recommendations.

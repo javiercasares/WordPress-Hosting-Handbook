@@ -1,15 +1,5 @@
 # WordPress Reliability
 
-- Backup
-
-- - Where to make copies
-  - When to make copies
-
-- Monitoring
-
-- - Uptime
-  - Performance
-
 When we already have a site in operation, the work of hosting does not end. The machines can and do fail, so we need to have methods to check that it is working as well as a backup system.
 
 ## Backup

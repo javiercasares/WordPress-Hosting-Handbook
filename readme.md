@@ -51,7 +51,7 @@ If you are a developer (or if you are a user and want to improve the tool), you 
 
 #### Slack
 
-https://wordpress.slack.com/archives/hosting-community/
+You can find the global WordPress Slack at [wordpress.slack.com](https://wordpress.slack.com/). When you are in, find the [#hosting-community](https://wordpress.slack.com/archives/hosting-community/) channel.
 
 You can [sign up](https://wordpress.slack.com/signup) using your WordPress.org username (if you don't have one, [create an account and WordPress profile](https://login.wordpress.org/register)) like "my_WordPress_username@chat.wordpress.org", replacing "my_WordPress_username" with your WordPress username.
 
