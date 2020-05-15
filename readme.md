@@ -44,7 +44,6 @@ You can also include ideas or elements that you think could be useful for your w
 
 #### Improvements in the development of the PHPUnit test tools
 
-
 If you are a developer (or if you are a user and want to improve the tool), you might want to propose improvements or solve those available in both the [PHPUnit test runner (issues)](https://github.com/WordPress/phpunit-test-runner/issues) and the [PHPUnit test reporter (issues)](https://github.com/WordPress/phpunit-test-reporter/issues).
 
 ### First steps for New Contributors
@@ -86,7 +85,6 @@ If you are interested in the [Hosting Team](https://make.wordpress.org/hosting/)
 
 - [Core](https://make.wordpress.org/core/): The core team makes WordPress. Whether you’re a seasoned PHP developer or are just learning to code, we’d love to have you on board. You can write code, fix bugs, debate decisions, and help with development.
 - [CLI](https://make.wordpress.org/cli/): WP-CLI is the official command line tool for interacting with and managing your WordPress sites.
-
 - [Tide](https://make.wordpress.org/tide/): Tide is a series of automated tests run against every plugin and theme in the directory and then displays PHP compatibility and test errors/warnings in the directory.
 
 ## Other documents
@@ -104,4 +102,3 @@ Also, other Contributor Day documents:
 ## Team Pledges
 
 *Here, some explanation why or how to get a pledge / badges on your Profile or why (usually) people get one.*
-
