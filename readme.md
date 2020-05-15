@@ -12,6 +12,10 @@ The hosting team meets at Slack -wordpress- #hosting-community on Wednesdays at 
 
 ## WordPress Handbook
 
+Requirements
 
+[Performance](performance.md)
 
-Performance
+Security
+
+[Reliability](reliability.md)
