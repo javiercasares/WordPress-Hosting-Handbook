@@ -10,15 +10,17 @@ To verify this compatibility, the [WordPress Hosting Community team](https://mak
 
 ### Reporter
 
-
+Something here...
 
 ## Setting up on hosting systems
 
 ### Local Environment Recommendations
 
+Something here...
+
 ### Travis, Circle or other CI
 
-
+Something here...
 
 ## Try the PHPUnit Test Runner
 
@@ -36,9 +38,11 @@ The tool can be run manually or through an automated system like Travis. To see 
 
 The first thing we'll do is download and synchronize the tool.
 
-`cd /tmp/`
-`git clone https://github.com/WordPress/phpunit-test-runner.git`
-`cd phpunit-test-runner/`
+```bash
+cd /tmp/
+git clone https://github.com/WordPress/phpunit-test-runner.git
+cd phpunit-test-runner/
+```
 
 The next step will be to configure the environment. To do this, first we'll make a copy of the example file and then we'll configure it.
 
@@ -122,124 +126,85 @@ What do the symbols mean?
 
 If you have followed all the steps up to this point it is very likely that the test you have run will fail quite a bit (for example, because by default it will not be able to do image processing). But that's OK, as I said, this is an example to check and verify the operation.
 
-**Creating a report**
-
-
+#### Creating a report
 
 Even if the test has failed, we can generate the report and (if necessary) send it. But first things first, which is the creation of the reports. To do this we will execute the file that does it.
 
-
-
+```bash
 cd /tmp/phpunit-test-runner/
-
 php report.php
-
-
+```
 
 This system will generate the two files that are sent as reports.
 
-
-
 In the first one we can see the information about our environment.
 
-
-
+```bash
 cat /tmp/wordpress/env.json
-
-
+```
 
 The content of this file is somewhat similar to this:
 
-
-
+```json
 {
-
- "php_version": "7.4.5",
-
- "php_modules": {
-
-  "bcmath": false,
-
-  "curl": "7.4.5",
-
-  "filter": "7.4.5",
-
-  "gd": false,
-
-  "libsodium": false,
-
-  "mcrypt": false,
-
-  "mod_xml": false,
-
-  "mysqli": "7.4.5",
-
-  "imagick": false,
-
-  "pcre": "7.4.5",
-
-  "xml": "7.4.5",
-
-  "xmlreader": "7.4.5",
-
-  "zlib": "7.4.5"
-
- },
-
- "system_utils": {
-
-  "curl": "7.58.0 (x86_64-pc-linux-gnu) libcurl\/7.58.0 OpenSSL\/1.1.1g zlib\/1.2.11 libidn2\/2.3.0 libpsl\/0.19.1 (+libidn2\/2.0.4) nghttp2\/1.30.0 librtmp\/2.3",
-
-  "ghostscript": "",
-
-  "imagemagick": false,
-
-  "openssl": "1.1.1g 21 Apr 2020"
-
- },
-
- "mysql_version": "mysql Ver 15.1 Distrib 10.4.12-MariaDB, for debian-linux-gnu (x86_64) using readline 5.2",
-
- "os_name": "Linux",
-
- "os_version": "4.15.0-20-generic"
-
+  "php_version": "7.4.5",
+  "php_modules": {
+    "bcmath": false,
+    "curl": "7.4.5",
+    "filter": "7.4.5",
+    "gd": false,
+    "libsodium": false,
+    "mcrypt": false,
+    "mod_xml": false,
+    "mysqli": "7.4.5",
+    "imagick": false,
+    "pcre": "7.4.5",
+    "xml": "7.4.5",
+    "xmlreader": "7.4.5",
+    "zlib": "7.4.5"
+  },
+  "system_utils": {
+    "curl": "7.58.0 (x86_64-pc-linux-gnu) libcurl\/7.58.0 OpenSSL\/1.1.1g zlib\/1.2.11 libidn2\/2.3.0 libpsl\/0.19.1 (+libidn2\/2.0.4) nghttp2\/1.30.0 librtmp\/2.3",
+    "ghostscript": "",
+    "imagemagick": false,
+    "openssl": "1.1.1g 21 Apr 2020"
+  },
+  "mysql_version": "mysql Ver 15.1 Distrib 10.4.12-MariaDB, for debian-linux-gnu (x86_64) using readline 5.2",
+  "os_name": "Linux",
+  "os_version": "4.15.0-20-generic"
 }
-
-
+```
 
 As you can see, among the most important elements are the extensions that are commonly used in WordPress and some utilities that are also generally useful.
 
-
-
 The other file is the one that includes all the tests that are made (more than 10,000) giving information of the time that they take to be executed, problems that have arisen...
 
-
-
+```bash
 cat /tmp/wordpress/junit.xml
+```
 
-
-
-**Cleaning up the environment for other tests**
-
-
+#### Cleaning up the environment for other tests
 
 Now that we have the tests working, all that remains is to delete all the files that have been created so that we can start over. To do this we will execute the following command:
 
-
-
+```bash
 cd /tmp/phpunit-test-runner/
-
 php cleanup.php
+```
 
-
-
-**Improving the configuration**
-
-
+#### Improving the configuration
 
 We must not forget that the aim of this tool is to verify that our environment and infrastructure is the optimal one for WordPress to work, so, following the example above, we could make several improvements such as installing the extension of bcmath, gd, libsodium, mcrypt, mod_xml and imagick or utilities such as ghostscript and imagemagick.
 
-
-
 The goal? To be error free and have the green light for the perfect configuration.
+
+## How to report: Creating your bot for WordPress.org
+
+If you want your test [results to appear on the WordPress.org page](https://make.wordpress.org/hosting/test-results/), you can create a user for that.
+
+The first thing to do is [create a user on WordPress.org](https://login.wordpress.org/register). If your company is called *ExampleHostingCompany, Inc*, for example, you can call your users something like examplehostingcmpanybot. Keep in mind that the associated email account should be checked frequently, as emails will arrive regarding the possible operation of the tests.
+
+Create [an issue on the test page](https://github.com/WordPress/phpunit-test-runner/issues/new) asking to include the bot in the results page as a "Test Reporter", indicating the email account you used with that user.
+
+Once the user has been created in the system you will be given access to a password so that you can configure the system to send the information automatically. You will have to go to Users -> Your Profile and there generate the application password. Later you can modify the environment constant with something similar to `export WPT_REPORT_API_KEY='somoshostingbot:ABCD 1234 abcd 4567 EFGH efgh'`.
+
