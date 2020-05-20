@@ -20,11 +20,11 @@ Something here...
 
 ## WordPress Handbook
 
-- [Requirements](requirements.md)
-- [Performance](performance.md)
-- [Security](security.md)
-- [Reliability](reliability.md)
-- [Tests](tests.md)
+- [Requirements](server-environment/readme.md)
+- [Performance](performance/readme.md)
+- [Security](security/readme.md)
+- [Reliability](reliability/readme.md)
+- [Tests](tests/readme.md)
 
 ## Get Involved
 
