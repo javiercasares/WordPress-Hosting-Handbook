@@ -36,11 +36,23 @@ Mainly there is the development of the [Hosting Handbook](https://make.wordpress
 
 For hosting companies there is the [PHPUnit test runner](https://github.com/WordPress/phpunit-test-runner) and [PHPUnit test reporter](https://github.com/WordPress/phpunit-test-reporter) tool. These tools provide information about the configurations of the different settings and their compatibility with different and future developments.
 
-#### Improved Hosting Handbook
+#### Improving Hosting Handbook
 
 The idea is to expand and improve the manual that is used as a basis for the equipment and where doubts should be resolved.
 
 You can also include ideas or elements that you think could be useful for your work and the training of WordPress users.
+
+##### How to contribute to the Hosting Handbook
+
+If you want to contribute to improve the WordPress Hosting Team Handbook you can do it through Github.
+
+The first thing you'll have to do is [visit the repository page](https://github.com/javiercasares/WordPress-Hosting-Handbook) where all the information is.
+
+If you know how Git works you can help by simply [proposing a Pull request](https://github.com/javiercasares/WordPress-Hosting-Handbook/pulls) and it will be addressed, though it's best to [visit the Issues list](https://github.com/javiercasares/WordPress-Hosting-Handbook/issues), check if your proposal is already contemplated or pending, and if it isn't, [create a New issue](https://github.com/javiercasares/WordPress-Hosting-Handbook/issues/new).
+
+![](assets/github-issue.png)
+
+Once you have completed this process, the WordPress Hosting Team will review and discuss whether or not to include the suggestion.
 
 #### Improvements in the development of the PHPUnit test tools
 
@@ -66,7 +78,7 @@ Open Floors
 wp-admin Access
 Writing in the WordPress voice 
 
-### Getting Started at a Contributor Day
+### Getting Started at Contributing
 
 Working Groups
 New Contributor Onboarding
