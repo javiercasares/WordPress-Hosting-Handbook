@@ -1,18 +1,18 @@
 {
-	"handbook": {
+	"index": {
 		"title": "About the Hosting Team",
-		"slug": "handbook",
+		"slug": "index",
 		"markdown_source": "https://raw.githubusercontent.com/javiercasares/WordPress-Hosting-Handbook/master/readme.md",
-		"parent": "handbook"
+		"parent": null
 	},
 	"handbook/server-environment": {
-		"title": "WordPress requirements",
+		"title": "WordPress Requirements",
 		"slug": "server-environment",
 		"markdown_source": "https://raw.githubusercontent.com/javiercasares/WordPress-Hosting-Handbook/master/server-environment/readme.md",
 		"parent": "handbook"
 	},
 	"handbook/performance": {
-		"title": "Improve your WordPress performance",
+		"title": "WordPress Performance",
 		"slug": "performance",
 		"markdown_source": "https://raw.githubusercontent.com/javiercasares/WordPress-Hosting-Handbook/master/performance/readme.md",
 		"parent": "handbook"
