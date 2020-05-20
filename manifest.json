@@ -1,0 +1,38 @@
+{
+	"handbook": {
+		"title": "About the Hosting Team",
+		"slug": "handbook",
+		"markdown_source": "https://raw.githubusercontent.com/javiercasares/WordPress-Hosting-Handbook/master/readme.md",
+		"parent": "handbook"
+	},
+	"handbook/server-environment": {
+		"title": "WordPress requirements",
+		"slug": "server-environment",
+		"markdown_source": "https://raw.githubusercontent.com/javiercasares/WordPress-Hosting-Handbook/master/server-environment/readme.md",
+		"parent": "handbook"
+	},
+	"handbook/performance": {
+		"title": "Improve your WordPress performance",
+		"slug": "performance",
+		"markdown_source": "https://raw.githubusercontent.com/javiercasares/WordPress-Hosting-Handbook/master/performance/readme.md",
+		"parent": "handbook"
+	},
+	"handbook/security": {
+		"title": "WordPress Security",
+		"slug": "security",
+		"markdown_source": "https://raw.githubusercontent.com/javiercasares/WordPress-Hosting-Handbook/master/security/readme.md",
+		"parent": "handbook"
+	},
+	"handbook/reliability": {
+		"title": "WordPress Reliability",
+		"slug": "reliability",
+		"markdown_source": "https://raw.githubusercontent.com/javiercasares/WordPress-Hosting-Handbook/master/reliability/readme.md",
+		"parent": "handbook"
+	},
+	"handbook/tests": {
+		"title": "PHPUnit Tests",
+		"slug": "tests",
+		"markdown_source": "https://raw.githubusercontent.com/javiercasares/WordPress-Hosting-Handbook/master/tests/readme.md",
+		"parent": "handbook"
+	}
+}
