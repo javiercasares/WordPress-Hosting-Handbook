@@ -68,22 +68,10 @@ You can [sign up](https://wordpress.slack.com/signup) using your WordPress.org u
 
 #### Meetings: What to expect
 
-
-The meeting is usually to connect about WordPress happenings throughout the week connected with hosting and to catch up on the status of the team's ongoing projects.
-The agenda mainly consists of the following topics:
-
-* Greetings
-* Highlights
-* Hosting Team tasks
-* Open Floor
-
-During the Greetings we do a “Wave in” to get an overview who is in for the meeting and check how everyone is doing. New attendees are welcomed to introduce themselves.
-
-In the highlights section the team talks about the latest happenings in the WordPress space and it's impacts on the hosts. Examples are new WordPress releases, new proposals or WordCamps.
-
-The Hosting team tasks part of the meeting focuses on open tasks or issues on hosting related projects like the handbook or the PHPUNit tests. Additionally, we handle request from other teams here.
-
-Everything else up for discussion will be handled during the open floor. Every attendee can bring up topics here to discuss or just to inform hosts.
+Meeting times and days
+Wave in
+Topics discussed
+Open Floors
 
 #### Meetings: Taking notes
 
