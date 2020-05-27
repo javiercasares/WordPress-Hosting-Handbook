@@ -5,6 +5,12 @@
 		"markdown_source": "https://raw.githubusercontent.com/javiercasares/WordPress-Hosting-Handbook/master/readme.md",
 		"parent": null
 	},
+	"handbook/get-involved": {
+		"title": "Get Involved",
+		"slug": "get-involved",
+		"markdown_source": "https://raw.githubusercontent.com/javiercasares/WordPress-Hosting-Handbook/master/get-involved/readme.md",
+		"parent": "handbook"
+	},
 	"handbook/server-environment": {
 		"title": "WordPress Requirements",
 		"slug": "server-environment",
